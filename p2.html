@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur de Location</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .vehicle-type {
+            display: flex;
+            gap: 10px;
+        }
+        .vehicle-type button {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .vehicle-type .selected {
+            background-color: #28a745;
+            color: white;
+        }
+        .vehicle-type button:not(.selected) {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-btn {
+            background-color: #ffc107;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-btn:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quel type de véhicule ?</h1>
+
+        <div class="form-group vehicle-type">
+            <button id="carBtn" class="selected">Voitures</button>
+            <button id="utilityBtn">Utilitaires</button>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="location">Départ et lieu de retour</label>
+                <input type="text" id="location" placeholder="Départ et lieu de retour">
+            </div>
+
+            <div class="form-group">
+                <label for="start-date">Date et heure de départ</label>
+                <input type="date" id="start-date">
+                <input type="time" id="start-time">
+            </div>
+
+            <div class="form-group">
+                <label for="end-date">Date et heure de retour</label>
+                <input type="date" id="end-date">
+                <input type="time" id="end-time">
+            </div>
+
+            <div class="form-group">
+                <label>Mon âge</label>
+                <select id="age">
+                    <option value="26">26+</option>
+                    <option value="18-25">18-25</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Je réside en</label>
+                <select id="residence">
+                    <option value="tunisia">Tunisie</option>
+                    <option value="france">France</option>
+                    <option value="other">Autre</option>
+                </select>
+            </div>
+
+            <div class="form-group checkbox">
+                <input type="checkbox" id="negotiated-rate">
+                <label for="negotiated-rate">J'ai un tarif négocié</label>
+            </div>
+
+            <button type="button" class="search-btn">Rechercher</button>
+        </form>
+    </div>
+
+    <script>
+        const carBtn = document.getElementById('carBtn');
+        const utilityBtn = document.getElementById('utilityBtn');
+
+        carBtn.addEventListener('click', () => {
+            carBtn.classList.add('selected');
+            utilityBtn.classList.remove('selected');
+        });
+
+        utilityBtn.addEventListener('click', () => {
+            utilityBtn.classList.add('selected');
+            carBtn.classList.remove('selected');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vente de Voiture</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vendre une Voiture</h1>
+        <form id="carForm">
+            <div>
+                <label for="carName">Modèle de la voiture:</label>
+                <input type="text" id="carName" name="carName" required>
+            </div>
+            <div> 
+                <label for="carDescription">Description:</label>
+                <textarea id="carDescription" name="carDescription" required></textarea>
+            </div>
+            
+            <div>
+                <label for="carPrice">Prix (DT):</label>
+                <input type="number" id="carPrice" name="carPrice" required>
+            </div>            
+           <div>
+             <label for="numphone">Numero (+216):</label>
+             <input type="number" id="numphone" name="numphone" required>
+           </div>
+           <div>
+             <label for="chevale">chevaux fiscaux </label>
+             <input type="number" id="chevale" name="chevale" required>
+           </div>
+        
+           <div>
+            <label for="chevale">Kilométrage (Km)</label>
+            <input type="number" id="kilom" name="kilom" required>
+          </div>
+            <div>
+                <label for="carPrice">votre email:</label>
+                <input type="email" id="email" name="email" required>
+                
+            </div>
+            <div>
+                <label for="carImage">Image de la voiture:</label>
+                <input type="file" id="carImage" name="carImage" accept="image/*" required>
+
+            </div>
+            
+            <button type="submit">Soumettre</button>
+        </form>
+        <div id="preview"></div>
+    </div>
+    <script>
+        document.getElementById("carForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const carData = {
+                name: document.getElementById("carName").value,
+                description: document.getElementById("carDescription").value,
+                price: document.getElementById("carPrice").value,
+                phone: document.getElementById("numphone").value,
+                email: document.getElementById("email").value
+            };
+            
+            localStorage.setItem("carData", JSON.stringify(carData));
+            window.location.href = "car.html";
+        });
+    </script>
+</body>
+</html>

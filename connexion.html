@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        /* Centrer la page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image:url('https://cdn.qwenlm.ai/output/23d6bba8-9bd4-43b6-9bdd-3082a904b658/t2i/9f7a6599-0492-407a-866e-5c6ba2597111/4150f92a-8123-4876-9dd8-d08c69ccc8be.png');
+    font-family: Arial, sans-serif;
+}
+
+/* Style du conteneur principal */
+.wrapper {
+    backdrop-filter: blur(50px);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+/* Style du formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Titre */
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Champs de saisie */
+.input-container {
+    display: flex;
+    align-items: center;
+    background:beige;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.input-container i {
+    margin-right: 10px;
+    color: #555;
+}
+
+.input-container input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Style de la case à cocher et du lien */
+.remember {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.remember a {
+    color: #4facfe;
+    text-decoration: none;
+}
+
+.remember a:hover {
+    text-decoration: underline;
+}
+
+/* Bouton */
+.btn {
+    background: #4facfe;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00c3ff;
+}
+
+/* Lien d'inscription */
+.register {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register a {
+    color: #4facfe;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<script>
+    // Fonction JavaScript pour rediriger à la deuxième page
+    function loginRedirect() {
+        window.location.href = "pageoff.html"; // Remplacer "dashboard.html" par l'URL de ta deuxième page
+    }
+</script>
+<body>
+    <div class="wrapper">
+        <form action="javascript:void(0);" method="POST"> <!-- Modification pour empêcher le rechargement de la page -->
+            <h1>Login</h1>
+
+            <div class="input-container">
+                <i class="bx bxs-user"></i>
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <div class="input-container">
+                <i class="bx bxs-lock-alt"></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="remember">
+                <label><input type="checkbox" name="remember"> Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <!-- Lier la fonction loginRedirect() au clic sur le bouton -->
+            <button type="button" class="btn" onclick="loginRedirect()">Login</button>
+
+            <div class="register">
+                <p>Don't have an account? <a href="#">Register</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

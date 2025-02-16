@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails de la Voiture</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Détails de la Voiture</h1>
+        
+        <div id="carDetails">
+            <h2 id="carName"></h2>
+            <p id="carDescription"></p>
+            <img id="carImage" alt="Image de la voiture" style="max-width: 100%; height: auto;">
+            <p><strong>Prix:</strong> <span id="carPrice"></span> DT</p>
+            <p><strong>Numéro de téléphone:</strong> <span id="carPhone"></span></p>
+            <p><strong>Email:</strong> <span id="carEmail"></span></p>
+        </div>
+
+        <button onclick="goBack()">Retour</button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const carData = JSON.parse(localStorage.getItem("carData"));
+            if (carData) {
+                document.getElementById("carName").innerText = carData.name;
+                document.getElementById("carDescription").innerText = carData.description;
+                document.getElementById("carPrice").innerText = carData.price;
+                document.getElementById("carPhone").innerText = carData.phone;
+                document.getElementById("carEmail").innerText = carData.email;
+                
+                // Afficher l'image de la voiture
+                const carImage = document.getElementById("carImage");
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    carImage.src = e.target.result;
+                };
+                reader.readAsDataURL(carData.image);
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
