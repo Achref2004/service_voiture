@@ -35,8 +35,8 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
+            color:#053684;
+            text-decoration:double;
         }
 
         .nav-links {
@@ -45,10 +45,11 @@
         }
 
         .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
+            color:#076022;
+            text-decoration:dotted;
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-style: italic;
+            transition: all 0.6s ease;
             position: relative;
         }
 
@@ -69,19 +70,27 @@
         }
 
         .main-container {
-            justify-content: center;
-
+            box-shadow: 0 0 15px rgba(0, 162, 255, 0.963);
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #390fcf;
+            border-radius: 90px;
             display: flex;
+            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.2); /* Fond semi-transparent */
+            backdrop-filter: blur(10px); /* Effet de flou */
+            -webkit-backdrop-filter: blur(10px); /* Compatibilité Safari */
         }
+
 
         .section {
             
             flex: 1 1 calc(50% - 10px);
             backdrop-filter: blur(80px);
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
             backdrop-filter: blur(10px);
         }
@@ -181,15 +190,16 @@
             border-radius: 4px;
             margin: 5px 0;
         }
-
         .about-section {
+            box-shadow: #390fcf;
             display: flex;
-            flex-direction: column;
+            flex-direction:column;
             align-items: center;
             text-align: center;
         }
 
         .about-image img {
+           
             max-width: 100%;
             height: auto;
             border-radius: 8px;
@@ -207,7 +217,7 @@
 
         @media (max-width: 768px) {
             .main-container {
-                flex-direction: column;
+                flex-direction:column;
             }
             
            
@@ -231,13 +241,30 @@
     }
         
     .container {
-         
+            box-shadow: 0 0 25px rgba(0, 162, 255, 0.963);
+            border: 1px solid #390fcf;
             max-width: 800px;
             margin: auto;
             padding: 20px;
-            border: 1px solid #ccc;
             border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(195, 175, 175, 0.093);
+        }
+        .containerss {
+           
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+         /* Animations */
+         @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -253,6 +280,8 @@
             </div>
         </div>
         </nav>
+
+        <h1>🚗</h1>
     <h1 style="font-size: 60px" > Service voiture</h1>
     
     <div class="main-container">
@@ -407,7 +436,7 @@
 </section>
 </div>
  <section id="bessbes" >
-        <div class="container">
+        <div class="containerss">
             <h2>vos Avis</h2>
             <div class="about-content">
                 <div class="about-image">

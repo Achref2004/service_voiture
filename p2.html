@@ -5,24 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulateur de Location</title>
     <style>
-        body {
+           body {
+            justify-content: center;  /* Centre horizontalement */
+            align-items: center;      /* Centre verticalement */
             font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
             margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
+            padding: 20px;
+            min-height: 100vh;
         }
+        img {
+           
+           max-width: 100%;
+           height: auto;
+           border-radius: 8px;
+           margin-bottom: 15px;
+       }
         .container {
+            backdrop-filter: blur(50px);
             max-width: 800px;
             margin: 50px auto;
-            background: white;
-            padding: 20px;
+            padding: 90px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0px 20px rgba(0, 149, 255, 0.471);
         }
+        .containers {
+          
+            max-width: 800px;
+            backdrop-filter: blur(50px);
+            margin: 50px auto;
+            padding: 90px;
+            border-radius: 10px;
+            box-shadow: 0 0px 20px rgba(0, 149, 255, 0.471);
+        }
+        h2{
+            color: #c51414;
+      
+           font-style: italic;  
+            font-size: 40px;
+            text-align: center;
+        }
+        h3{
+      
+            font-style: italic;  
+            font-size: 30px;
+            text-align: center;
+            color: #053684;
+            margin-bottom: 30px;
+
+        }
+        h4{
+            text-align:left;
+            color: #480fac;
+            margin-bottom: 30px;
+
+        }
+
         h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
+            font-style: italic;  
+            font-size: 54px;
+            text-align: center;
+            color: #c51414;
+            margin-bottom: 30px;
         }
         .form-group {
             margin-bottom: 15px;
@@ -45,7 +89,7 @@
             gap: 10px;
         }
         .search-btn {
-            background-color: #159836;
+            background-color: #c60000;
             color: #000000;
             font-weight: bold;
             font-size: 16px;
@@ -60,6 +104,29 @@
         .hidden {
             display: none;
         }
+        button {
+            background: linear-gradient(135deg, #fe0404, #ec0000);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="texte"]{
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+
     </style>
 </head>
 <body>
@@ -133,8 +200,29 @@
             <button type="button" class="search-btn">Rechercher</button>
         </form>
     </div>
+    <div class="containers">
+        <h3> si vous avez une proposition n'hesite pas de proposer </h3>
+            <label for="message">Écrivez votre message :</label>
+            <input type="text" id="message" name="message" required></textarea>
+            <button type="submit">Envoyer</button> 
+    </div>
 
     <script>
+          (function(){
+        emailjs.init("jnayehachref2004@gmail.com"); // Remplace par ton User ID EmailJS
+    })();
+
+    document.getElementById("contact-form").addEventListener("submit", function(event){
+        event.preventDefault();
+
+        emailjs.send("TON_SERVICE_ID", "TON_TEMPLATE_ID", {
+            message: document.getElementById("message").value
+        }).then(function(response) {
+            alert("Message envoyé avec succès !");
+        }, function(error) {
+            alert("Erreur lors de l'envoi !");
+        });
+    });
         const idTypeSelect = document.getElementById("idType");
         const cinGroup = document.getElementById("cinGroup");
         const passportGroup = document.getElementById("passportGroup");
