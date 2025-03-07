@@ -39,34 +39,14 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .vehicle-type {
-            display: flex;
-            gap: 10px;
-        }
-        .vehicle-type button {
-            flex: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .vehicle-type .selected {
-            background-color: #28a745;
-            color: white;
-        }
-        .vehicle-type button:not(.selected) {
-            background-color: #f1f1f1;
-            color: #333;
-        }
         .checkbox {
             display: flex;
             align-items: center;
             gap: 10px;
         }
         .search-btn {
-            background-color: #ffc107;
-            color: #333;
+            background-color: #159836;
+            color: #000000;
             font-weight: bold;
             font-size: 16px;
             padding: 10px;
@@ -75,23 +55,39 @@
             cursor: pointer;
         }
         .search-btn:hover {
-            background-color: #e0a800;
+            background-color: #e00016;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Quel type de véhicule ?</h1>
-
-        <div class="form-group vehicle-type">
-            <button id="carBtn" class="selected">Voitures</button>
-            <button id="utilityBtn">Utilitaires</button>
-        </div>
+        <h1 style="color: #e00016;">Remplissez le formulaire pour réserver une voiture</h1>
 
         <form>
             <div class="form-group">
                 <label for="location">Départ et lieu de retour</label>
                 <input type="text" id="location" placeholder="Départ et lieu de retour">
+            </div>
+
+            <div class="form-group">
+                <label for="idType">Type de pièce d'identité</label>
+                <select id="idType">
+                    <option value="CIN">CIN</option>
+                    <option value="Passport">Passeport</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="cinGroup">
+                <label for="cin">CIN</label>
+                <input type="number" id="cin">
+            </div>
+
+            <div class="form-group hidden" id="passportGroup">
+                <label for="passport">Passeport</label>
+                <input type="number" id="passport">
             </div>
 
             <div class="form-group">
@@ -119,13 +115,19 @@
                 <select id="residence">
                     <option value="tunisia">Tunisie</option>
                     <option value="france">France</option>
+                    <option value="italie">Italie</option>
+                    <option value="georgia">Géorgie</option>
                     <option value="other">Autre</option>
                 </select>
             </div>
 
             <div class="form-group checkbox">
-                <input type="checkbox" id="negotiated-rate">
-                <label for="negotiated-rate">J'ai un tarif négocié</label>
+                <label>
+                    <input type="checkbox" id="paiementEnLigne"> Paiement en ligne
+                </label>
+                <label>
+                    <input type="checkbox" id="paiementSurPlace"> Paiement sur place
+                </label>
             </div>
 
             <button type="button" class="search-btn">Rechercher</button>
@@ -133,17 +135,18 @@
     </div>
 
     <script>
-        const carBtn = document.getElementById('carBtn');
-        const utilityBtn = document.getElementById('utilityBtn');
+        const idTypeSelect = document.getElementById("idType");
+        const cinGroup = document.getElementById("cinGroup");
+        const passportGroup = document.getElementById("passportGroup");
 
-        carBtn.addEventListener('click', () => {
-            carBtn.classList.add('selected');
-            utilityBtn.classList.remove('selected');
-        });
-
-        utilityBtn.addEventListener('click', () => {
-            utilityBtn.classList.add('selected');
-            carBtn.classList.remove('selected');
+        idTypeSelect.addEventListener("change", function() {
+            if (this.value === "CIN") {
+                cinGroup.classList.remove("hidden");
+                passportGroup.classList.add("hidden");
+            } else {
+                passportGroup.classList.remove("hidden");
+                cinGroup.classList.add("hidden");
+            }
         });
     </script>
 </body>

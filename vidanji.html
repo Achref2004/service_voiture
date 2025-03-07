@@ -244,11 +244,11 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Tounsi Car</a>
+            <a href="#" class="logo"> Tounsi Car</a>
             <div class="nav-links">
-                <a href="#accueil" class="active">VidangeAlert</a>
-                <a href="#vehicules">LibraFiant🛢️🔄</a>
-                <a href="#contact">Assurance</a>
+                <a href="#bess" class="active">VidangeAlert</a>
+                <a href="#librafiant">LibraFiant🛢️🔄</a>
+                <a href="#assurance">Assurance</a>
                 <a href="#bessbes">Vos avis</a>
             </div>
         </div>
@@ -257,6 +257,7 @@
     
     <div class="main-container">
         <!-- Section formulaire -->
+        <section id="bess">
         <div class="section">
             <div class="form-group">
                 <label for="currentKm"><h3 style="font-size: 35px;">Kilométrage actuel (en km)</h3></Kilom> :</label>
@@ -280,7 +281,7 @@
                 </div>
 
                 <div class="maintenance-item">
-                    <h2>VidangeAlert 📢🛑</h2>
+                    <h2>📢🛑VidangeAlert 📢🛑</h2>
                     <label>Liquide de frein</label>
                     <h4>Intervalle : 40 000 km</h4>
                     <button onclick="calculateRemainingKm('frein', 40000)">Calculer</button>
@@ -308,14 +309,16 @@
             </div>
         </div>
     </div>
+</section>
 
         <!-- Section à propos -->
+        <section id="librafiant">
         <div class="section about-section">
             <div class="about-image">
             </div>
             
             <div class="about-content">
-                <h2> LibraFiant🛢️🔄</h2>
+                <h2> 🛢️🔄LibraFiant🛢️🔄</h2>
                 <p>maintenant vous trouvez le meuilleure librufiant pour votre voiture </p>
                 <table border="0">
                     <tr>
@@ -344,14 +347,15 @@
  
             </div>
         </div>
-
+        </section>
     
         <!-- Section à propos -->
+         <section id="assurance">
      <div class="section thesection">
         <div class="about-image">
             <img src="" alt="Notre agence">
         </div>
-        <h2 style="color: #ec0000;"> Assurance</h2>
+        <h2 style="color: #ec0000;">🚗🛡️ Assurance🚗🛡️</h2>
         <p>Cher client, merci de nous fournir les informations relatives à votre assurance ainsi que sa localisation pour procéder au paiement. Votre véhicule doit être couvert en permanence afin d’éviter toute taxation.</p>
        
         <div class="container">
@@ -400,9 +404,9 @@
         </div>
     </div>
 
-
+</section>
 </div>
- <section id="apropos" class="section about-section">
+ <section id="bessbes" >
         <div class="container">
             <h2>vos Avis</h2>
             <div class="about-content">
@@ -410,8 +414,8 @@
                     <img src="https://cdn.qwenlm.ai/output/23d6bba8-9bd4-43b6-9bdd-3082a904b658/t2i/664ebfc5-58f8-4185-88fc-c67a63c9bae9/2a360862-c044-4017-a66a-b66658f8a0f0.png"width="1000" height="600">
                 </div>
 
-
-
+            </div>
+        </section>
     <script>
         // Charger l'historique au démarrage
         document.addEventListener('DOMContentLoaded', loadHistory);
