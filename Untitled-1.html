@@ -10,7 +10,7 @@
 <body>
     <div class="form-container">
         <header>
-            <h1 style="color: brown;">Publiez votre annonce automobile</h1>
+            <h1>Publiez votre annonce automobile</h1>
             <p>Remplissez les informations ci-dessous pour vendre votre véhicule rapidement</p>
         </header>
         
@@ -33,7 +33,7 @@
 
                 <div class="form-group">
                     <label for="phone">Téléphone *</label>
-                    <input type="tel" id="phone" placeholder="+216 12 345 678" pattern="[+216]{4}[0-9]{8}" required>
+                    <input type="tel" id="phone" placeholder="+216 12 345 678" required>
                 </div>
 
                 <div class="form-group">
@@ -70,47 +70,43 @@
     </div>
 
     <script>
-        document.getElementById('carForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    try {
+        <!-- Ajout dans le script existant -->
+<script>
+    document.getElementById('carForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Gestion des images
         const files = document.getElementById('carImage').files;
-        const imagePromises = Array.from(files).map(file => {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
+        const imageUrls = [];
+        
+        // Conversion des images en Data URL
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function() {
+                imageUrls.push(reader.result);
+                
+                // Sauvegarde quand toutes les images sont chargées
+                if(imageUrls.length === files.length) {
+                    const carData = {
+                        name: document.getElementById('carName').value,
+                        description: document.getElementById('carDescription').value,
+                        price: document.getElementById('carPrice').value,
+                        phone: document.getElementById('phone').value,
+                        email: document.getElementById('email').value,
+                        fiscalPower: document.getElementById('fiscalPower').value,
+                        mileage: document.getElementById('mileage').value,
+                        images: imageUrls
+                    };
+
+                    // Stockage avec un timestamp comme clé unique
+                    const key = `car_${Date.now()}`;
+                    localStorage.setItem(key, JSON.stringify(carData));
+                    window.location.href = 'car.html';
+                }
+            };
         });
-
-        const imageUrls = await Promise.all(imagePromises);
-
-        const carData = {
-            id: Date.now(),
-            name: document.getElementById('carName').value,
-            description: document.getElementById('carDescription').value,
-            price: document.getElementById('carPrice').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            fiscalPower: document.getElementById('fiscalPower').value,
-            mileage: document.getElementById('mileage').value,
-            images: imageUrls,
-            createdAt: new Date().toISOString()
-        };
-
-        // Stockage sécurisé
-        const existingCars = JSON.parse(localStorage.getItem('cars')) || [];
-        existingCars.push(carData);
-        localStorage.setItem('cars', JSON.stringify(existingCars));
-        
-        window.location.href = 'car.html';
-        
-    } catch (error) {
-        console.error("Erreur lors de la soumission :", error);
-        alert("Une erreur est survenue. Veuillez réessayer.");
-    }
-});
-    </script>
+    });
+</script>
 </body>
 </html>
