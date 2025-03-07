@@ -1,0 +1,543 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service voiture</title>
+    <style>
+        body {
+            justify-content: center;  /* Centre horizontalement */
+            align-items: center;      /* Centre verticalement */
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .navbar {
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .main-container {
+            justify-content: center;
+
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .section {
+            
+            flex: 1 1 calc(50% - 10px);
+            backdrop-filter: blur(80px);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+        h2{
+            color: #c51414;
+      
+           font-style: italic;  
+            font-size: 40px;
+            text-align: center;
+        }
+        h3{
+      
+            font-style: italic;  
+            font-size: 30px;
+            text-align: center;
+            color: #053684;
+            margin-bottom: 30px;
+
+        }
+        h4{
+            text-align:left;
+            color: #480fac;
+            margin-bottom: 30px;
+
+        }
+
+        h1 {
+            font-style: italic;  
+            font-size: 54px;
+            text-align: center;
+            color: #c51414;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="number"], input[type="date"] {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, #fe0404, #ec0000);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .save-date-btn {
+            background: #f50b0b;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8f8f8;
+            border-radius: 4px;
+        }
+
+        .history-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+        }
+
+        .history-list {
+            list-style: none;
+            padding: 0;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            padding: 8px;
+            background: #f8f8f8;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+
+        .about-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-list li {
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+           
+
+        }
+        table {
+      width: 100%;
+      border-collapse: collapse; /* Pour que les bordures se fusionnent */
+    }
+    th {
+      width: 200px; /* Définir une largeur uniforme pour les cellules */
+      height: 200px; /* Définir une hauteur uniforme pour les cellules */
+      border: 1px solid rgb(249, 235, 235); /* Ajouter des bordures autour des cellules */
+      text-align: center; /* Centrer le contenu dans les cellules */
+      vertical-align: middle; /* Centrer verticalement */
+    }
+    p{
+         font-style: italic;  
+         font-size: 24px;
+         color: rgb(0, 25, 124); 
+    }
+        
+    .container {
+         
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(195, 175, 175, 0.093);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Tounsi Car</a>
+            <div class="nav-links">
+                <a href="#accueil" class="active">VidangeAlert</a>
+                <a href="#vehicules">LibraFiant🛢️🔄</a>
+                <a href="#contact">Assurance</a>
+                <a href="#bessbes">Vos avis</a>
+            </div>
+        </div>
+        </nav>
+    <h1 style="font-size: 60px" > Service voiture</h1>
+    
+    <div class="main-container">
+        <!-- Section formulaire -->
+        <div class="section">
+            <div class="form-group">
+                <label for="currentKm"><h3 style="font-size: 35px;">Kilométrage actuel (en km)</h3></Kilom> :</label>
+                <input type="number" id="currentKm" placeholder="Entrez votre kilométrage actuel" required>
+            </div>
+
+            <div class="form-group" >
+                <h3 style="font-size: 35px;">Mon historique de derniere vidange</h3>
+                
+                <!-- Section vidange avec historique -->
+                <div class="maintenance-item">
+                    <div class="date-input-group">
+                        <input type="date" id="oilChangeDate">
+                        <button class="save-date-btn" onclick="saveOilChangeDate()">Enregistrer</button>
+                    </div>
+                    
+                    <div class="history-section">
+                        <h3 style="font-size: 35px;">Historique des vidanges</h3>
+                        <ul id="historyList" class="history-list"></ul>
+                    </div>
+                </div>
+
+                <div class="maintenance-item">
+                    <h2>VidangeAlert 📢🛑</h2>
+                    <label>Liquide de frein</label>
+                    <h4>Intervalle : 40 000 km</h4>
+                    <button onclick="calculateRemainingKm('frein', 40000)">Calculer</button>
+                    <div id="resultFrein" class="result"></div>
+                </div>
+
+                <div class="maintenance-item">
+                    <label>changement d'huile moteur</label>
+                    <h4>Intervalle : 10 000 km</h4>
+                    <button onclick="calculateRemainingKm('huilem', 10000)">Calculer</button>
+                    <div id="resulthuilem" class="result"></div>
+                </div>
+                <div class="maintenance-item">
+                    <label>Pneu Voiture</label>
+                    <h4>Intervalle : 45 000 km</h4>
+                    <button onclick="calculateRemainingKm('pneu', 450000)">Calculer</button>
+                    <div id="resultpneu" class="result"></div>
+                </div>
+                <div class="maintenance-item">
+                    <label>Filtres</label>
+                    <h4>Intervalle : 20 000 km</h4>
+                    <button onclick="calculateRemainingKm('filtres', 20000)">Calculer</button>
+                    <div id="resultFiltres" class="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Section à propos -->
+        <div class="section about-section">
+            <div class="about-image">
+            </div>
+            
+            <div class="about-content">
+                <h2> LibraFiant🛢️🔄</h2>
+                <p>maintenant vous trouvez le meuilleure librufiant pour votre voiture </p>
+                <table border="0">
+                    <tr>
+                        <th><h3>Shell</h3></th>
+                        <th><a href="https://www.shell.tn/conducteurs/huiles-moteur-et-lubrifiants-shell.html">librafiant shell</a></th>
+                        <th><img src="https://brandlogos.net/wp-content/uploads/2014/09/royal_dutch_shell-logo-brandlogo.net_.png"width="300" height="150"></th>
+                    </tr>
+                    <tr>
+                        <th><h3>Castrol</h3></th>
+                        <th><a href="https://www.castrol.com/fr_fr/france/home/products/automotive/automotive-engines.html">librafiant Castrol</a></th>
+                        <th><img src="https://logos-marques.com/wp-content/uploads/2023/03/Castrol-Logo-2006.png"width="300" height="150"></th>
+                    </tr>
+
+                    <tr>
+                        <th><h3>TotalEnergie</h3></th>
+                        <th><a href="https://services.totalenergies.tn/mes-lubrifiants/automobile">  librafiant TotalEnergie </a></th>
+                        <th><img src="https://tunisieauto.tn/wp-content/uploads/2024/06/TotalEnergies-New-Logo.png"width="200" height="150"></th>
+                    </tr>
+                    <tr>
+                        <th><h3>Bestoil</h3></th>
+                        <th><a href="https://www.bestoil.tn/10-automobile?q=Cat%C3%A9gories-Huiles+Moteur">  librafiant Bestoil </a></th>
+                        <th><img src="data:image/jpeg;base64,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"width="300" height="150"></th>
+                    </tr>
+            
+                </table>
+ 
+            </div>
+        </div>
+
+    
+        <!-- Section à propos -->
+     <div class="section thesection">
+        <div class="about-image">
+            <img src="" alt="Notre agence">
+        </div>
+        <h2 style="color: #ec0000;"> Assurance</h2>
+        <p>Cher client, merci de nous fournir les informations relatives à votre assurance ainsi que sa localisation pour procéder au paiement. Votre véhicule doit être couvert en permanence afin d’éviter toute taxation.</p>
+       
+        <div class="container">
+            <h2>Calcul de la Prochaine Échéance</h2>
+            <label for="type">Type d'Assurance :</label>
+            <select id="type">
+                <option value="annuelle">Annuelle</option>
+                <option value="saisonniere">Saisonnière</option>
+            </select>
+        
+            <label for="lastPayment">Date du Dernier Paiement :</label>
+            <input type="date" id="lastPayment">
+        
+            <button onclick="calculerProchaineDate()">Calculer</button>
+        
+            <p id="result"></p>
+        </div>
+
+        
+            <table border="0">
+                <tr>
+                    <th><h3 style="color: #076022;">STAR</h3></th>
+                    <th><a href="https://www.star.com.tn/agences"> Carte referme nos agence STAR</a></th>
+                    <th><img src="https://ween.tn/uploads/image/3981/3979/avatar/avatar.jpg"width="300" height="150"></th>
+                  </tr>
+                  <tr>
+                    <th><h3 style="color: #c51414;">ATTAKAFULIA</h3></th>
+                    <th><a href="http://www.attakafulia.tn/Fr/les-courtiers-et-les-points-de-vente_8_120"> Carte referme nos agence ATTAKAFULIA </a></th>
+                    <th><img src="https://ween.tn/uploads/image/4339/4337/avatar/avatar.jpg"width="300" height="150"></th>
+                  </tr>
+                  <tr>
+                    <th><h3>LLOYED</h3></th>
+                    <th><a href="https://www.lloyd.com.tn/notre-reseau/"> Carte referme nos agence LLOYED  </a></th>
+                    <th><img src="https://ween.tn/uploads/image/4126/4124/avatar/avatar.jpg"600" height="350"></th>
+        
+                </tr>
+                <tr>
+                    <th><h3 style="color: #076022;">MAE</h3></th>
+                    <th><a href="https://souscription.mae.tn/agency"> Carte referme nos agence MAE  </a></th>
+                    <th><img src="https://www.avidea.tn/wp-content/uploads/2024/06/logo-mae-final.png"300" height="150"></th>
+        
+                </tr>
+            </table>
+
+           
+        </div>
+    </div>
+
+
+</div>
+ <section id="apropos" class="section about-section">
+        <div class="container">
+            <h2>vos Avis</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://cdn.qwenlm.ai/output/23d6bba8-9bd4-43b6-9bdd-3082a904b658/t2i/664ebfc5-58f8-4185-88fc-c67a63c9bae9/2a360862-c044-4017-a66a-b66658f8a0f0.png"width="1000" height="600">
+                </div>
+
+
+
+    <script>
+        // Charger l'historique au démarrage
+        document.addEventListener('DOMContentLoaded', loadHistory);
+
+        // Enregistrement des dates de vidange
+        function saveOilChangeDate() {
+            const dateInput = document.getElementById('oilChangeDate');
+            const currentKm = document.getElementById('currentKm').value;
+            
+            if (!dateInput.value) {
+                alert('Veuillez sélectionner une date');
+                return;
+            }
+            
+            if (!currentKm || currentKm <= 0) {
+                alert('Veuillez entrer un kilométrage valide');
+                return;
+            }
+            
+            const history = JSON.parse(localStorage.getItem('oilHistory')) || [];
+            history.push({
+                date: dateInput.value,
+                km: currentKm
+            });
+            
+            localStorage.setItem('oilHistory', JSON.stringify(history));
+            dateInput.value = '';
+            updateHistoryDisplay();
+        }
+
+        // Affichage de l'historique
+        function updateHistoryDisplay() {
+            const historyList = document.getElementById('historyList');
+            const history = JSON.parse(localStorage.getItem('oilHistory')) || [];
+            
+            historyList.innerHTML = history.map(item => 
+                `<li class="history-item">
+                    📅 ${new Date(item.date).toLocaleDateString()} 
+                    🚗 ${parseInt(item.km).toLocaleString()} km
+                </li>`
+            ).join('');
+        }
+
+        // Calcul pour la vidange
+        function calculateOilChange() {
+            const currentKm = parseInt(document.getElementById('currentKm').value);
+            const resultElement = document.getElementById('resultHuile');
+            
+            if (isNaN(currentKm) || currentKm <= 0) {
+                resultElement.innerHTML = "Veuillez entrer un kilométrage valide.";
+                resultElement.style.color = "red";
+                return;
+            }
+
+            // Calcul kilométrique
+            const kmInterval = 10000;
+            const kmRestants = kmInterval - (currentKm % kmInterval);
+            
+            // Calcul temporel
+            const history = JSON.parse(localStorage.getItem('oilHistory')) || [];
+            const lastEntry = history[history.length - 1];
+            let daysRemaining = 365;
+            
+            if (lastEntry) {
+                const lastDate = new Date(lastEntry.date);
+                const now = new Date();
+                daysRemaining = Math.floor((365 - (now - lastDate)/(1000*60*60*24)));
+            }
+
+            // Message d'alerte
+            let message = '';
+            let color = 'green';
+            
+            if (kmRestants < 2000 || daysRemaining < 30) {
+                message = "ALERTE VIDANGE 🚦";
+                color = 'red';
+            } else {
+                message = `Prochaine vidange dans ${kmRestants.toLocaleString()} km 
+                          ${lastEntry ? `ou ${daysRemaining} jours` : ''}`;
+            }
+
+            resultElement.innerHTML = message;
+            resultElement.style.color = color;
+        }
+
+        // Calcul général
+        function calculateRemainingKm(entretien, intervalle) {
+            const currentKm = parseInt(document.getElementById('currentKm').value);
+            const resultElement = document.getElementById(`result${entretien.charAt(0).toUpperCase() + entretien.slice(1)}`);
+            
+            if (isNaN(currentKm) || currentKm <= 0) {
+                resultElement.textContent = "Veuillez entrer un kilométrage valide.";
+                resultElement.style.color = "red";
+                return;
+            }
+
+            const kmRestants = intervalle - (currentKm % intervalle);
+            const message = kmRestants === intervalle 
+                ? "C'est le moment de faire cette vérification !" 
+                : `Il vous reste ${kmRestants.toLocaleString()} km avant cette vérification.`;
+            
+            resultElement.textContent = message;
+            resultElement.style.color = kmRestants < intervalle * 0.2 ? "red" : "green";
+        }
+        function calculerProchaineDate() {
+        let type = document.getElementById("type").value;
+        let lastPayment = document.getElementById("lastPayment").value;
+
+        if (!lastPayment) {
+            document.getElementById("result").textContent = "Veuillez entrer une date valide.";
+            return;
+        }
+
+        let lastDate = new Date(lastPayment);
+        let nextDate;
+
+        if (type === "annuelle") {
+            nextDate = new Date(lastDate.setFullYear(lastDate.getFullYear() + 1));
+        } else {
+            nextDate = new Date(lastDate.setMonth(lastDate.getMonth() + 6)); // Saisonnière = tous les 6 mois
+        }
+
+        let options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById("result").textContent = "Prochaine date de paiement : " + nextDate.toLocaleDateString("fr-FR", options);
+    }
+    
+    </script>
+</body>
+</html>
