@@ -21,15 +21,14 @@
 
         /* Barre de Navigation */
         .navbar {
-            background: rgba(230, 231, 240, 0.95);
-            padding: 1rem 2rem;
+            padding: 0rem 1rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
-            background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
         }
 
         .nav-container {
@@ -43,7 +42,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
+            color:rgba(224, 2, 2, 0.844);
             text-decoration: none;
         }
 
@@ -53,8 +52,9 @@
         }
 
         .nav-links a {
+            font-size: 15px;
             font-weight: 100;
-            color:#0a036d;
+            color:#011d47;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -77,6 +77,8 @@
             width: 100%;
         }
 
+
+
         /* Section Héro */
         .hero {
             height: 100vh;
@@ -84,7 +86,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+            background: linear-gradient(rgba(1, 43, 60, 0.563), rgba(137, 132, 132, 0.348)),
                         url('https://cdn.qwenlm.ai/output/23d6bba8-9bd4-43b6-9bdd-3082a904b658/t2i/9f7a6599-0492-407a-866e-5c6ba2597111/4150f92a-8123-4876-9dd8-d08c69ccc8be.png');
             background-size: cover;
             background-position: center;
@@ -105,6 +107,7 @@
 
         /* Sections */
         .section {
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
             padding: 6rem 2rem;
         }
 
@@ -125,13 +128,14 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
         }
 
         .car-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 15px rgb(6, 153, 245);
             transition: transform 0.3s ease;
         }
 
@@ -188,7 +192,7 @@
 
         /* Section Contact */
         .contact-section {
-            background-color:#f9fcff;
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
             color: rgb(0, 0, 0);
         }
 
@@ -203,21 +207,22 @@
 
         input, textarea {
             width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            background: rgba(138, 153, 247, 0.1);
-            color: rgb(0, 0, 0);
+            padding: 12px;
+            border: 2px solid #186aa1;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
         }
-
+        
         textarea {
+            backdrop-filter: blur(90px);
             height: 150px;
             resize: none;
         }
 
         /* Section À Propos */
         .about-section {
-            background: white;
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
         }
 
         .about-content {
@@ -237,6 +242,10 @@
             width: 100%;
             height: 400px;
             object-fit: cover;
+        }
+         li {
+            list-style-type: circle;  /* Utilise des cercles comme puces */
+            padding-left: 20px;       /* Ajoute du padding à gauche */
         }
 
         /* Animations */
