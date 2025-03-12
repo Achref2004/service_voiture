@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpaper.forfun.com/fetch/02/028195c2a47498c740aa4b689d3b51b0.jpeg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-container {
+            backdrop-filter: blur(20px);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(139, 211, 62, 0.1);
+            text-align: center;
+            width: 1000px;
+        }
+
+        h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 2em;
+            color: #aa0303; /* Couleur rouge tomate */
+            letter-spacing: 2px; /* Espace entre les lettres */
+            animation: fadeInRight 1.5s ease-out; /* Animation fade and slide from left */
+            margin-bottom: 20px;
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px); /* Commence à gauche en dehors de l'écran */
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0); /* Fin de l'animation avec le texte centré */
+            }
+        }
+
+        .answer {
+            backdrop-filter: blur(20px);
+            color: #ffffff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.4s;
+        }
+
+        .answer:hover {
+            background-color: #a90e0e;
+        }
+
+        .answer.correct {
+            background-color: green;
+            color: white;
+        }
+
+        .answer.incorrect {
+            background-color: red;
+            color: white;
+            text-decoration: line-through;
+        }
+
+        #score {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #c41212;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #dbf5dc;
+        }
+
+        #message {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1 id="question-title">Question</h1>
+        <div id="answers-container"></div>
+        <div id="score"></div>
+        <div id="message"></div>
+        <button id="next-question" onclick="nextQuestion()" style="display: none;">Suivant</button>
+    </div>
+
+    <script>
+        // Liste des questions
+        const questions = [
+            {
+                question: "Qui a obtenu le premier prix du F1 ?",
+                answers: ["Achref jnayeh", "rafell nadal", "cr7", "Messi"],
+                correct: "Achref jnayeh"
+            },
+            {
+                question: "Quelle le voiture tunisien parmis ces voiture?",
+                answers: ["WALYSE", "BMW", "MERCEDESSE", "RANGE ROVER"],
+                correct: "walyse"
+            },
+            {
+                question: "En quelle année Mercedes-Benz a-t-elle changé son nom en Mercedes-Benz Group AG ?",
+                answers: ["2020", "2022", "2021", "2023"],
+                correct: "2022"
+            },
+            {
+                question: "Quand a été fondée la marque Mercedes-Benz ? ",
+                answers: ["1905", "1926 ", "1950"," 1935"],
+                correct: "1926"
+            },
+            {
+                question: "la puissance fiscale de de la voiture RAM",
+                answers: ["395", "100", "902", "500"],
+                correct: "395"
+            },
+            {
+                question: "Quelle entreprise a fusionné pour créer Mercedes-Benz",
+                answers: ["BMW et Porsche", "Ford et Chrysler", "Daimler-Motoren-Gesellschaft et Benz & Cie", " Audi et Volkswagen"],
+                correct: "aimler-Motoren-Gesellschaft et Benz & Cie"
+            },
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const questionContainer = document.getElementById("question-title");
+            const answersContainer = document.getElementById("answers-container");
+
+            // Effacer les réponses précédentes
+            answersContainer.innerHTML = "";
+
+            // Vérifier si toutes les questions ont été posées
+            if (currentQuestionIndex >= questions.length) {
+                showFinalScore();
+                return;
+            }
+
+            // Charger la question actuelle
+            const currentQuestion = questions[currentQuestionIndex];
+            questionContainer.textContent = currentQuestion.question;
+
+            // Ajouter les réponses
+            currentQuestion.answers.forEach(answer => {
+                const answerDiv = document.createElement("div");
+                answerDiv.textContent = answer;
+                answerDiv.classList.add("answer");
+                answerDiv.setAttribute("data-correct", answer === currentQuestion.correct);
+                answerDiv.addEventListener("click", checkAnswer);
+                answersContainer.appendChild(answerDiv);
+            });
+        }
+
+        function checkAnswer(event) {
+            const selectedAnswer = event.target;
+            const isCorrect = selectedAnswer.getAttribute("data-correct") === "true";
+
+            // Désactiver tous les boutons après une sélection
+            const answers = document.querySelectorAll(".answer");
+            answers.forEach(answer => {
+                answer.style.pointerEvents = "none";
+
+                // Mettre en évidence la réponse correcte
+                if (answer.getAttribute("data-correct") === "true") {
+                    answer.classList.add("correct");
+                }
+
+                // Barrer et colorer en rouge la réponse incorrecte sélectionnée
+                if (answer === selectedAnswer && !isCorrect) {
+                    answer.classList.add("incorrect");
+                }
+            });
+
+            // Mettre à jour le score
+            if (isCorrect) {
+                score++;
+            }
+
+            // Afficher le bouton "Suivant"
+            document.getElementById("next-question").style.display = "block";
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+            document.getElementById("next-question").style.display = "none";
+        }
+
+        function showFinalScore() {
+            const questionContainer = document.getElementById("question-title");
+            const answersContainer = document.getElementById("answers-container");
+            const messageElement = document.getElementById("message");
+
+            // Effacer le contenu précédent
+            questionContainer.textContent = "Quiz terminé !";
+            answersContainer.innerHTML = "";
+            messageElement.textContent = `Votre score final : ${score}/${questions.length}`;
+            document.getElementById("next-question").style.display = "none";
+        }
+
+        // Charger la première question au démarrage
+        loadQuestion();
+    </script>
+</body>
+</html>
