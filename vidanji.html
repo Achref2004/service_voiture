@@ -8,7 +8,7 @@
             justify-content: center;  /* Centre horizontalement */
             align-items: center;      /* Centre verticalement */
             font-family: Arial, sans-serif;
-            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
+            background-color: #fffcfc;
             margin: 0;
             padding: 20px;
             min-height: 100vh;
@@ -70,11 +70,11 @@
         }
 
         .main-container {
-            box-shadow: 0 0 15px rgba(0, 162, 255, 0.963);
+            box-shadow: 0 0 15px rgba(82, 102, 113, 0.963);
             max-width: 900px;
             margin: auto;
             padding: 20px;
-            border: 1px solid #390fcf;
+            border: 1px solid #080809;
             border-radius: 90px;
             display: flex;
             justify-content: center;
@@ -95,7 +95,7 @@
             backdrop-filter: blur(10px);
         }
         h2{
-            color: #c51414;
+            color: #41046a;
       
            font-style: italic;  
             font-size: 40px;
@@ -121,7 +121,7 @@
             font-style: italic;  
             font-size: 54px;
             text-align: center;
-            color: #c51414;
+            color: #075c36;
             margin-bottom: 30px;
         }
 
@@ -144,7 +144,7 @@
         }
 
         button {
-            background: linear-gradient(135deg, #fe0404, #ec0000);
+            background: linear-gradient(135deg,  #137aa2, #137aa2);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -155,7 +155,7 @@
         }
 
         .save-date-btn {
-            background: #f50b0b;
+            background: #137aa2;
             flex: 1;
             margin-left: 10px;
         }
@@ -241,8 +241,8 @@
     }
         
     .container {
-            box-shadow: 0 0 25px rgba(0, 162, 255, 0.963);
-            border: 1px solid #390fcf;
+            box-shadow: 0 0 25px rgba(93, 110, 120, 0.963);
+            border: 1px solid #131214;
             max-width: 800px;
             margin: auto;
             padding: 20px;
@@ -266,9 +266,118 @@
                 transform: translateY(0);
             }
         }
+                /* Barre de Navigation */
+                .navbar {
+            padding: 0rem 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            background-image: url('https://img.freepik.com/photos-premium/marbre-calacatta-fond-texture-veines-dorees_846334-788.jpg')'
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color:rgba(1, 9, 146, 0.844);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 100;
+            color:#011d47;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color:#0a036d;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+           /* Style de la liste déroulante */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-content ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-content ul li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
     </style>
 </head>
 <body>
+       <!-- Barre de Navigation -->
+       <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Tounsi Car</a>
+            <div class="nav-links">
+                <a href="#accueil" class="active">Accueil</a>
+                <a href="#location" class="location">Location</a>
+                <a href="#avendre" class="avendre">vent</a>
+                <a href="#marchee" class="marchee">Showroom</a>
+                <a href="#zyout" class="zyout">Service</a>
+                <a href="#jeux" class="jeux">Quise</a>
+                <a href="#guide" id="guide-link">Guide Pratique</a>
+
+
+            </div>
+        </div>
+    </nav>
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo"> Tounsi Car</a>
@@ -281,7 +390,6 @@
         </div>
         </nav>
 
-        <h1>🚗</h1>
     <h1 style="font-size: 60px" > Service voiture</h1>
     
     <div class="main-container">
@@ -310,7 +418,7 @@
                 </div>
 
                 <div class="maintenance-item">
-                    <h2>📢🛑VidangeAlert 📢🛑</h2>
+                    <h2>VidangeAlert </h2>
                     <label>Liquide de frein</label>
                     <h4>Intervalle : 40 000 km</h4>
                     <button onclick="calculateRemainingKm('frein', 40000)">Calculer</button>
@@ -384,7 +492,7 @@
         <div class="about-image">
             <img src="" alt="Notre agence">
         </div>
-        <h2 style="color: #ec0000;">🚗🛡️ Assurance🚗🛡️</h2>
+        <h2 > Assurance</h2>
         <p>Cher client, merci de nous fournir les informations relatives à votre assurance ainsi que sa localisation pour procéder au paiement. Votre véhicule doit être couvert en permanence afin d’éviter toute taxation.</p>
        
         <div class="container">
@@ -434,17 +542,7 @@
     </div>
 
 </section>
-</div>
- <section id="bessbes" >
-        <div class="containerss">
-            <h2>vos Avis</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://cdn.qwenlm.ai/output/23d6bba8-9bd4-43b6-9bdd-3082a904b658/t2i/664ebfc5-58f8-4185-88fc-c67a63c9bae9/2a360862-c044-4017-a66a-b66658f8a0f0.png"width="1000" height="600">
-                </div>
 
-            </div>
-        </section>
     <script>
         // Charger l'historique au démarrage
         document.addEventListener('DOMContentLoaded', loadHistory);
@@ -570,6 +668,62 @@
         let options = { year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById("result").textContent = "Prochaine date de paiement : " + nextDate.toLocaleDateString("fr-FR", options);
     }
+    
+        // Gestion de la navigation
+    // Gestion de la navigation
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Supprime la classe 'active' de tous les liens
+        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+
+        // Ajoute la classe 'active' au lien cliqué
+        this.classList.add('active');
+
+        // Vérifie si le lien doit rediriger vers une autre page
+        const redirections = {
+            avendre: "avendre.html",
+            zyout: "vidanji.html",
+            marchee: "car.html",
+            jeux: "quize.html",
+            location: "location.html"
+        };
+
+        if (redirections[this.classList[0]]) {
+            window.location.href = redirections[this.classList[0]];
+        } else {
+            // Défilement en douceur vers la section correspondante
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+});
+ // Sélectionner les éléments nécessaires
+ const guideLink = document.getElementById('guide-link');
+const dropdownContent = document.getElementById('guide-dropdown');
+
+// Ajouter un événement au clic sur le lien "Guide Pratique"
+guideLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Empêcher le comportement par défaut du lien
+
+    // Basculer l'affichage de la liste déroulante
+    if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+    } else {
+        dropdownContent.style.display = 'block';
+    }
+});
+
+// Fermer la liste déroulante si on clique en dehors
+document.addEventListener('click', function(event) {
+    if (!guideLink.contains(event.target) && !dropdownContent.contains(event.target)) {
+        dropdownContent.style.display = 'none';
+    }
+});
+
     
     </script>
 </body>

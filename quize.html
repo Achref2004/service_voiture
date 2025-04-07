@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://wallpaper.forfun.com/fetch/02/028195c2a47498c740aa4b689d3b51b0.jpeg');
+            background-image: url('./back.png');
             background-size: cover;
             margin: 0;
             padding: 0;
@@ -28,7 +28,7 @@
 
         h1 {
             font-family: 'Times New Roman', serif;
-            font-size: 2em;
+            font-size: 2.35em;
             color: #aa0303; /* Couleur rouge tomate */
             letter-spacing: 2px; /* Espace entre les lettres */
             animation: fadeInRight 1.5s ease-out; /* Animation fade and slide from left */
@@ -49,6 +49,7 @@
         .answer {
             backdrop-filter: blur(20px);
             color: #ffffff;
+            font-size:120%;
             padding: 10px;
             margin: 10px;
             border-radius: 5px;
@@ -83,12 +84,13 @@
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
-            width: 100%;
+            width: 50%;
             margin-top: 20px;
         }
 
         button:hover {
             background-color: #dbf5dc;
+            color: black;
         }
 
         #message {
@@ -97,15 +99,147 @@
             margin-top: 10px;
             color: #ffffff;
         }
+                /* Barre de Navigation */
+                .navbar {
+            padding: 0rem 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            background-image: url('https://img.freepik.com/photos-premium/marbre-calacatta-fond-texture-veines-dorees_846334-788.jpg')'
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color:rgba(1, 9, 146, 0.844);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 100;
+            color:#011d47;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color:#0a036d;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+           /* Style de la liste déroulante */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-content ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-content ul li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
     </style>
 </head>
 <body>
+       <!-- Barre de Navigation -->
+       <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Tounsi Car</a>
+            <div class="nav-links">
+                <a href="#accueil" class="active">Accueil</a>
+                <a href="#location" class="location">Location</a>
+                <a href="#avendre" class="avendre">vent</a>
+                <a href="#marchee" class="marchee">Showroom</a>
+                <a href="#zyout" class="zyout">Service</a>
+                <a href="#jeux" class="jeux">Quise</a>
+                <a href="#guide" id="guide-link">Guide Pratique</a>
+
+
+            </div>
+        </div>
+  
+    </nav>
+    <div id="guide-dropdown" class="dropdown-content">
+        <ul>
+            <li><a href="guide.html#fcr">FCR (Fiche de Contrôle Réparation)</a></li>
+            <li><a href="guide.html#contrat-vente">Exemple de contrat de vente</a></li>
+            <li><a href="guide.html#droit-conduire">Droit de conduire</a></li>
+            <li><a href="guide.html#visite-technique">Visite technique</a></li>
+            <li><a href="guide.html#permis-conduire">Permis de conduire</a></li>
+            <li><a href="guide.html#vignette">Vignette automobile</a></li>
+
+        </ul>
+    </div>
+    
+    <div>
+     <h1>Minuteur</h1>
+        <button onclick="startTimer()">Démarrer</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Réinitialiser</button>
+        
+    </div>
+   
     <div class="quiz-container">
+        
         <h1 id="question-title">Question</h1>
         <div id="answers-container"></div>
         <div id="score"></div>
         <div id="message"></div>
-        <button id="next-question" onclick="nextQuestion()" style="display: none;">Suivant</button>
+        <button id="next-question" onclick="nextQuestion()" style="display: none;width: 100%;">Suivant</button>
+        <div id="timer" style="color: #dddcc7; font-size:xx-large;font-family: 'Times New Roman', Times, serif;">⏳00:00⏳</div>
+        <h2>si vous etes etranger visite Tunisie vous ne regrette jamais 🇹🇳 </h2>
     </div>
 
     <script>
@@ -117,9 +251,9 @@
                 correct: "Achref jnayeh"
             },
             {
-                question: "Quelle le voiture tunisien parmis ces voiture?",
+                question: "Quelle le voiture de la marque tunisien ?",
                 answers: ["WALYSE", "BMW", "MERCEDESSE", "RANGE ROVER"],
-                correct: "walyse"
+                correct: "WALYSE"
             },
             {
                 question: "En quelle année Mercedes-Benz a-t-elle changé son nom en Mercedes-Benz Group AG ?",
@@ -128,7 +262,7 @@
             },
             {
                 question: "Quand a été fondée la marque Mercedes-Benz ? ",
-                answers: ["1905", "1926 ", "1950"," 1935"],
+                answers: ["1905", "1926", "1950"," 1935"],
                 correct: "1926"
             },
             {
@@ -139,8 +273,80 @@
             {
                 question: "Quelle entreprise a fusionné pour créer Mercedes-Benz",
                 answers: ["BMW et Porsche", "Ford et Chrysler", "Daimler-Motoren-Gesellschaft et Benz & Cie", " Audi et Volkswagen"],
-                correct: "aimler-Motoren-Gesellschaft et Benz & Cie"
+                correct: "Daimler-Motoren-Gesellschaft et Benz & Cie"
             },
+            {
+                question: "En 2013, BMW a lancé une gamme de véhicules entièrement électriques. Quel est le nom de cette gamme ?",
+                answers: ["BMW Vision", "BMW ActiveHybrid", "BMW eDrive", "BMW i"],
+                correct: "BMW i"
+            },
+            {
+                question: "Quelle est la marque du modèle Mustang ?",
+                answers: ["Audi", " Chevrolet", "Ford", "Ferrari"],
+                correct: "Ford"
+            },
+            {
+                question: " Quelle est la marque de la voiture 208 ?",
+                answers: ["Toyota", " Fiat", "Peugeot", "Citroën"],
+                correct: "Peugeot"
+            },
+            {
+                question: "Quelle marque fabrique le modèle Golf ?",
+                answers: ["Renault", "Ford", "Volkswagen", "Peugeot"],
+                correct: "Volkswagen"
+            },
+            {
+                question: "Quel constructeur est célèbre pour son logo en forme de cheval noir ?",
+                answers: ["Ferrari", "Porsche", "Lamborghini", "Maserati"],
+                correct: "Ferrari"
+            },
+            {
+                question: " Quel constructeur automobile possède la division AMG pour les voitures de haute performance ?",
+                answers: ["Audi", "Mercedes-Benz", "BMW", "Toyota"],
+                correct: "Mercedes-Benz"
+            },
+            {
+                question: " Quelle marque a lancé la Cybertruck ?",
+                answers: ["Tesla", "Chevrolet", "Ford", " Nissan"],
+                correct: "Tesla"
+            },
+            {
+                question: "Quelle marque fabrique la célèbre voiture de sport 911 ?",
+                answers: [" Audi", "Porsche", "Mercedes", "Ford"],
+                correct: "Porsche"
+            },
+            {
+                question: " Lamborghini a attiré l'attention avec son SUV. Comment s'appelle ce modèle ?",
+                answers: ["Lamborghini Huracán", "Lamborghini Aventador", "Lamborghini Urus", " Lamborghini Gallardo"],
+                correct: "Lamborghini Urus"
+            },
+            {
+                question: "lFerrari est célèbre pour ses voitures de sport. Quel modèle hybride a marqué un tournant pour la marque ?",
+                answers: ["Ferrari F430", "Ferrari 488 GTB", "LaFerrari", "Ferrari 812 Superfast"],
+                correct: "LaFerrari"
+            },
+            {
+                question: "Quel est le modèle de Tesla qui a attiré énormément d'attention en raison de son design futuriste et de ses performances de pick-up ?",
+                answers: [" Roadster", "Model 3", "Cybertruck", " Model S"],
+                correct: "Cybertruck"
+            },
+            {
+                question: "lQuelle est la première voiture produite par BMW après la Seconde Guerre mondiale, marquant ainsi son retour dans l’industrie automobile ?",
+                answers: ["BMW 503", "BMW 2002", "BMW 501", "BMW 328"],
+                correct: "BMW 501"
+            },
+            {
+
+                question: "Quel est le nom du programme d’auto-conduite (conduite autonome) de Mercedes-Benz ?",
+                answers: ["Mercedes Autopilot", "Drive Pilot", "Autopilot", "Mercedes Drive"],
+                correct: "Drive Pilot"
+            },
+            {
+                question: " Qui est considéré comme l’inventeur de la première automobile à moteur à combustion interne, qui est à l'origine de la création de Mercedes-Benz ?",
+                answers: ["Karl Benz","Gottlieb Daimler","Ferdinand Porsche","Enzo Ferrari"],
+                correct: "Karl Benz"
+            },
+
         ];
 
         let currentQuestionIndex = 0;
@@ -223,6 +429,107 @@
 
         // Charger la première question au démarrage
         loadQuestion();
+        let timer;
+        let totalSeconds = 0;
+        let running = false;
+
+        function startTimer() {
+            if (!running) {
+                inputSeconds = 120;
+                if (inputSeconds > 0) {
+                    totalSeconds = inputSeconds;
+                    running = true;
+                    updateTimer();
+                    timer = setInterval(updateTimer, 1000);
+                }
+            }
+        }
+
+        function pauseTimer() {
+            running = false;
+            clearInterval(timer);
+        }
+
+        function resetTimer() {
+            running = false;
+            clearInterval(timer);
+            totalSeconds = 0;
+            document.getElementById("timer").textContent = "00:00";
+            document.getElementById("timeInput").value = "";
+        }
+
+        function updateTimer() {
+            if (totalSeconds > 0) {
+                let minutes = Math.floor(totalSeconds / 60);
+                let seconds = totalSeconds % 60;
+
+                let formattedTime = 
+                    (minutes < 10 ? "0" + minutes : minutes) + ":" +
+                    (seconds < 10 ? "0" + seconds : seconds);
+                
+                document.getElementById("timer").textContent = formattedTime;
+                totalSeconds--;
+            } else {
+                clearInterval(timer);
+                document.getElementById("timer").textContent = "Temps écoulé ! vous etes perdu la prochaine fois doit etre plus rapide";
+                running = false;
+            }
+        }
+        // Gestion de la navigation
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Supprime la classe 'active' de tous les liens
+        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+
+        // Ajoute la classe 'active' au lien cliqué
+        this.classList.add('active');
+
+        // Vérifie si le lien doit rediriger vers une autre page
+        const redirections = {
+            avendre: "avendre.html",
+            zyout: "vidanji.html",
+            marchee: "car.html",
+            jeux: "quize.html",
+            location: "location.html"
+        };
+
+        if (redirections[this.classList[0]]) {
+            window.location.href = redirections[this.classList[0]];
+        } else {
+            // Défilement en douceur vers la section correspondante
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+});
+ // Sélectionner les éléments nécessaires
+ const guideLink = document.getElementById('guide-link');
+const dropdownContent = document.getElementById('guide-dropdown');
+
+// Ajouter un événement au clic sur le lien "Guide Pratique"
+guideLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Empêcher le comportement par défaut du lien
+
+    // Basculer l'affichage de la liste déroulante
+    if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+    } else {
+        dropdownContent.style.display = 'block';
+    }
+});
+
+// Fermer la liste déroulante si on clique en dehors
+document.addEventListener('click', function(event) {
+    if (!guideLink.contains(event.target) && !dropdownContent.contains(event.target)) {
+        dropdownContent.style.display = 'none';
+    }
+});
+
+
     </script>
 </body>
 </html>

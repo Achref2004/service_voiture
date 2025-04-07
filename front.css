@@ -15,8 +15,7 @@
         }
 
         body {
-            background-color: var(--light);
-            line-height: 1.6;
+            background-color:#e6e4de
         }
 
         /* Barre de Navigation */
@@ -28,7 +27,7 @@
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
-            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
+            background-color: #fdfae4;
         }
 
         .nav-container {
@@ -42,7 +41,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color:rgba(224, 2, 2, 0.844);
+            color:rgba(1, 9, 146, 0.844);
             text-decoration: none;
         }
 
@@ -86,11 +85,11 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(1, 43, 60, 0.563), rgba(137, 132, 132, 0.348)),
-                        url('https://cdn.qwenlm.ai/output/23d6bba8-9bd4-43b6-9bdd-3082a904b658/t2i/664ebfc5-58f8-4185-88fc-c67a63c9bae9/2a360862-c044-4017-a66a-b66658f8a0f0.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoiMjNkNmJiYTgtOWJkNC00M2I2LTliZGQtMzA4MmE5MDRiNjU4IiwicmVzb3VyY2VfaWQiOiIyYTM2MDg2Mi1jMDQ0LTQwMTctYTY2YS1iNjY2NThmOGEwZjAiLCJyZXNvdXJjZV9jaGF0X2lkIjpudWxsfQ.2FadhKXxo4gYLcjxsycGAAxm3VE2k7gKsme2EwLXjAM');
+            background: linear-gradient(rgba(0, 0, 0, 0.464), rgba(79, 51, 51, 0.382)),
+                        url('./fond.jpg');
             background-size: cover;
             background-position: center;
-            color: white;
+            color: rgb(255, 255, 255);
             margin-top: 70px;
         }
 
@@ -105,11 +104,7 @@
             animation: fadeInUp 1s ease;
         }
 
-        /* Sections */
-        .section {
-            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
-            padding: 6rem 2rem;
-        }
+       
 
         .container {
             max-width: 1200px;
@@ -123,55 +118,6 @@
             text-align: center;
         }
 
-        /* Galerie de Voitures */
-        .cars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
-        }
-
-        .car-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 6px 15px rgb(6, 153, 245);
-            transition: transform 0.3s ease;
-        }
-
-        .car-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .car-image {
-            height: 220px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .car-info {
-            padding: 1.5rem;
-        }
-
-        .car-title {
-            font-size: 1.3rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .car-details {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            color: #666;
-        }
-
-        .car-price {
-            color: var(--secondary);
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
         .btn {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -183,16 +129,16 @@
 
         .btn-primary {
             background: var(--secondary);
-            color: white;
+            color: rgb(92, 11, 11);
         }
 
         .btn-primary:hover {
-            background: var(--primary);
+            background: chocolate;
         }
 
         /* Section Contact */
         .contact-section {
-            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
+            background-color: #f3f1e4;
             color: rgb(0, 0, 0);
         }
 
@@ -219,58 +165,312 @@
             height: 150px;
             resize: none;
         }
+        
 
         /* Section À Propos */
-        .about-section {
-            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
+        :root {
+            --primary: #06863d;
+            --secondary: #f8f9fa;
+            --accent: #071e94;
         }
-
+        
+        .about-section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        .about-section {
+            background: rgb(250, 248, 240);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .about-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(134,6,21,0.1) 0%, rgba(255,215,0,0.1) 100%);
+            z-index: 0;
+        }
+        
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+            padding: 60px;
         }
-
+        
+        .about-section:nth-child(even) .about-content {
+            grid-template-columns: 1fr 1fr;
+            direction: rtl;
+        }
+        
         .about-image {
-            border-radius: 15px;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 15px;
         }
-
+        
         .about-image img {
             width: 100%;
-            height: 400px;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
-         li {
-            list-style-type: circle;  /* Utilise des cercles comme puces */
-            padding-left: 20px;       /* Ajoute du padding à gauche */
+        
+        .about-image:hover img {
+            transform: scale(1.1);
         }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(134,6,21,0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
+        
+        .about-image:hover::after {
+            opacity: 1;
+        }
+        
+        .agence-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .agence-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .about-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #4a4a4a;
+            margin-bottom: 30px;
+        }
+        
+        .about-text p {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .about-text p::before {
+            content: '➤';
+            position: absolute;
+            color: var(--primary);
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        
+        .location-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background: rgba(134,6,21,0.1);
+            margin-top: 20px;
+        }
+        
+        .location-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(10px);
+        }
+        
+        .contact-btn {
+            background: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(74, 72, 72, 0.3);
+            margin-top: 20px;
+        }
+        
+        .contact-btn:hover {
+            background: #004d3a;
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
             .about-content {
                 grid-template-columns: 1fr;
+                padding: 40px;
+            }
+            
+            .agence-title {
+                font-size: 2.5rem;
             }
         }
+        
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .about-section {
+        animation: fadeIn 0.8s ease-out;
+    }
+
+    .photo-album {
+        padding: 60px 0;
+        background: #dfe0d8;
+    }
+    
+    .album-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+    }
+    
+    .album-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .album-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+    
+    .album-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .album-item:hover img {
+        transform: scale(1.1);
+    }
+    
+    .album-item::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(102, 3, 3, 0.093), rgba(180, 32, 32, 0.548));
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .album-item:hover::after {
+        opacity: 1;
+    }
+    
+    .album-caption {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        font-family: 'Merriweather', serif;
+        font-size: 1.2rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    /* Style de la liste déroulante */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-content ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-content ul li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .album-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .album-item {
+            height: 300px;
+        }
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .album-item {
+        animation: fadeIn 0.6s ease-out;
+    }
+   
+    
+
+          

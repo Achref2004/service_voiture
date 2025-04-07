@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location </title>
+    <link rel="stylesheet">
+    <style>
+          /* Galerie de Voitures */
+          .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            background-color: #e1e5e1;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgb(70, 82, 90);
+            transition: transform 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .car-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .car-info {
+            padding: 1.5rem;
+        }
+
+        .car-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .car-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .car-price {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: rgb(0, 221, 255);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: black;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+         /* Section Héro */
+         .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(1, 43, 60, 0.563), rgba(137, 132, 132, 0.348)),
+                        url('./crte.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+                /* Barre de Navigation */
+                .navbar {
+            padding: 0rem 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            background-image: url('https://img.freepik.com/photos-premium/marbre-calacatta-fond-texture-veines-dorees_846334-788.jpg')'
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color:rgba(1, 9, 146, 0.844);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 100;
+            color:#011d47;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color:#0a036d;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+           /* Style de la liste déroulante */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-content ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-content ul li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+
+    </style>
+    
+</head>
+<body>
+      <!-- Barre de Navigation -->
+      <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Tounsi Car</a>
+            <div class="nav-links">
+                <a href="#accueil" class="active">Accueil</a>
+                <a href="#location" class="location">Location</a>
+                <a href="#avendre" class="avendre">vent</a>
+                <a href="#marchee" class="marchee">Showroom</a>
+                <a href="#zyout" class="zyout">Service</a>
+                <a href="#jeux" class="jeux">Quise</a>
+                <a href="#guide" id="guide-link">Guide Pratique</a>
+                
+
+
+            </div>
+        </div>
+    </nav>
+      <div id="guide-dropdown" class="dropdown-content">
+        <ul>
+            <li><a href="guide.html#fcr">FCR (Fiche de Contrôle Réparation)</a></li>
+            <li><a href="guide.html#contrat-vente">Exemple de contrat de vente</a></li>
+            <li><a href="guide.html#droit-conduire">Droit de conduire</a></li>
+            <li><a href="guide.html#visite-technique">Visite technique</a></li>
+            <li><a href="guide.html#permis-conduire">Permis de conduire</a></li>
+            <li><a href="guide.html#vignette">Vignette automobile</a></li>
+
+        </ul>
+    </div>
+
+     
+       <!-- Section Accueil -->
+       <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Location des Voitures </h1>
+            <p>Vous êtes le bienvenu ! Découvrez notre collection exclusive de véhicules. </p>
+            <a href="#vehicules" class="btn btn-primary">Notre collection</a>
+        </div>
+    </section>
+  <!-- Section Véhicules -->
+    <section id="vehicules" class="section">
+        <div class="container">
+            <h2 style="color: rgba(4, 6, 117, 0.84);">Notre Collection de voiture du location</h2>
+            <div class="cars-grid">
+                <!-- Voitures ajoutées dynamiquement -->
+            </div>
+        </div>
+    </section>
+</body>
+
+
+<script>
+    
+
+//donner de voiture
+        const cars = [
+            {
+                name: "MERCEDES",
+                image: "./marrr.png",
+                price: "100 DT/jour💸",
+                dispo: "Disponible ",
+                transmission: "Automatique",
+                year: "2025"
+            },
+            {
+                name: "NISSANE",
+                image: "./,issan.png",
+                price: "70 DT/jour💸",
+                dispo: "dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+            {
+                name: "KIA RIO",
+                image: "./kiario.png",
+                price: "70 DT/jour💸",
+                dispo: "Non Disponible ",
+                transmission: "Automatique",
+                year: "2025"
+            },
+            {
+                name: "BMW",
+                image: "./bmwn.png",
+                price: "100 DT/jour💸",
+                dispo: "dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+            {
+                name: "POLO",
+                image: "./polo.png",
+                price: "100 DT/jour💸",
+                dispo: "dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+            {
+                name: "GOLF 7 ",
+                image: "./golf7.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+            {
+                name: "BMW ",
+                image: "./bmmw.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+          
+            {
+                name: "MERCEDES",
+                image: "./marcedecn.png",
+                price: "100 DT/jour💸",
+                dispo: "Disponible ",
+                transmission: "Automatique",
+                year: "2025"
+            },
+            
+         
+            {
+                name: "BMW classique ",
+                image: "./bmw.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+            {
+                
+                name: "CLIO ",
+                image: "./nodispo.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+        
+            {
+                name: "TOYOTA CORELLA HIAS ",
+                image: "./nodispo.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+        
+            {
+                name: "Marcedess classique ",
+                image: "./nodispo.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+        
+            {
+                name: "Marcedess classique ",
+                image: "./nodispo.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+        
+            {
+                name: "WALIS ",
+                image: "./nodispo.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+        
+            {
+                name: "RENAULT 21 ",
+                image: "./nodispo.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+            {
+                name: "SYMBOL ",
+                image: "./nodispo.png",
+                price: " --DT/jour💸",
+                dispo: "non dsiponible",
+                transmission: "Automatique",
+                year: "2025"
+            },
+        
+        
+            
+        ];
+        
+        // Génération des cartes de véhicules
+        const carsGrid = document.querySelector('.cars-grid');
+        cars.forEach(car => {
+            const card = document.createElement('div');
+            card.className = 'car-card';
+            card.innerHTML = `
+                <div class="car-image" style="background-image: url('${car.image}')"></div>
+                <div class="car-info">
+                    <h3 class="car-title">${car.name}</h3>
+                    <div class="car-details">
+                        <span>${car.dispo}</span>
+                        <span>${car.year}</span>
+                    </div>
+                    <p class="car-price">${car.price}</p>
+                    <button onclick="allerVersPage()"class="btn btn-primary">Réserver maintenant</button>
+                </div>
+            `;
+            carsGrid.appendChild(card);
+            
+        });
+        function allerVersPage() {
+            window.location.href = "p2.html"}
+
+            
+             // Gestion de la navigation
+             document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Supprime la classe 'active' de tous les liens
+        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+
+        // Ajoute la classe 'active' au lien cliqué
+        this.classList.add('active');
+
+        // Vérifie si le lien doit rediriger vers une autre page
+        const redirections = {
+            avendre: "avendre.html",
+            zyout: "vidanji.html",
+            marchee: "car.html",
+            jeux: "quize.html",
+            location: "location.html"
+        };
+
+        if (redirections[this.classList[0]]) {
+            window.location.href = redirections[this.classList[0]];
+        } else {
+            // Défilement en douceur vers la section correspondante
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+});
+ // Sélectionner les éléments nécessaires
+ const guideLink = document.getElementById('guide-link');
+const dropdownContent = document.getElementById('guide-dropdown');
+
+// Ajouter un événement au clic sur le lien "Guide Pratique"
+guideLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Empêcher le comportement par défaut du lien
+
+    // Basculer l'affichage de la liste déroulante
+    if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+    } else {
+        dropdownContent.style.display = 'block';
+    }
+});
+
+// Fermer la liste déroulante si on clique en dehors
+document.addEventListener('click', function(event) {
+    if (!guideLink.contains(event.target) && !dropdownContent.contains(event.target)) {
+        dropdownContent.style.display = 'none';
+    }
+});
+
+
+    </script>
+
+</html>

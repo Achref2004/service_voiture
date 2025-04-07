@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tounsi Car - Location et vente de Voitures</title>
+    <style>/* Reset de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif; /* Police moderne */
+            line-height: 1.8;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Gradient doux */
+            color: #2c3e50;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        h1, h2 {
+            color: #138f1d; /* Rose vibrant */
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif; /* Police élégante */
+            font-weight: bold;
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin-top: 40px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #25891c, #ffcccb); /* Gradient sous le titre */
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+        
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #4a4e69;
+        }
+        
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #383535;
+        }
+        
+        strong {
+            color: #062795; /* Rose vibrant */
+            font-weight: bold;
+        }
+        
+        a {
+            color: #2c3e50; /* Bleu profond */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        a:hover {
+            color: #ff6f61; /* Rose vibrant */
+            transform: scale(1.05);
+        }
+        
+        section {
+            background: linear-gradient(135deg, #fff8f0, #d2f2cf); /* Gradient blanc */
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            padding: 30px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 111, 97, 0.2); /* Bordure subtile */
+        }
+        
+        section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Effet flottant renforcé */
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .vignette-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        .vignette-table th,
+        .vignette-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+            color: #4a4e69;
+        }
+        
+        .vignette-table th {
+            background: linear-gradient(90deg, #60c447, #73eda1); /* Gradient rose */
+            color: #ffffff;
+            font-weight: bold;
+        }
+        
+        .vignette-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .vignette-table tr:hover {
+            background-color: #bff3dd; /* Fond rose clair au survol */
+        }
+        
+        /* Styles spécifiques pour la section "Vignette" */
+        #vignette {
+            background: linear-gradient(135deg, #fff8f0, #d2f2cf); /* Gradient beige-rose */
+        }
+        
+        #vignette h2 {
+            color: #068336; /* Rose vibrant */
+        }
+        
+        #vignette p {
+            color: #4a4e69;
+        }
+        
+        /* Boutons ou call-to-action */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #128d29, #73d13d); /* Gradient rose */
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 12px rgba(255, 111, 97, 0.3); /* Ombre rose */
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(22, 126, 3, 0.4); /* Ombre renforcée */
+        }
+        
+        /* Animations d'apparition */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1, h2 {
+                font-size: 24px;
+            }
+        
+            section {
+                padding: 20px;
+            }
+        
+            ul {
+                margin-left: 15px;
+            }
+        }
+           /* Style de la liste déroulante */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-content ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-content ul li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+ /* Barre de Navigation */
+ .navbar {
+            padding: 0rem 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            background-image: url('https://img.freepik.com/photos-premium/marbre-calacatta-fond-texture-veines-dorees_846334-788.jpg')'
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color:rgba(1, 9, 146, 0.844);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 100;
+            color:#011d47;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color:#0a036d;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+       </style> 
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Tounsi Car</a>
+            <div class="nav-links">
+                <a href="#accueil" class="active">Accueil</a>
+                <a href="#location" class="location">Location</a>
+                <a href="#avendre" class="avendre">vent</a>
+                <a href="#marchee" class="marchee">Showroom</a>
+                <a href="#zyout" class="zyout">Service</a>
+                <a href="#jeux" class="jeux">Quise</a>
+                <a href="#guide" id="guide-link">Guide Pratique</a>
+               
+
+            </div>
+        </div>
+    </nav>
+  
+
+        <!-- FCR -->
+        <section id="fcr">
+            <h2> FCR (Fiche de Contrôle Réparation)</h2>
+            <p>Le décret n°370 de 2024 du 19 juin 2024 a fixé les avantages fiscaux accordés aux Tunisiens résidant à l’étranger ainsi que les conditions et modalités de leur octroi. Ce régime permet aux Tunisiens résidants à l’étranger d’importer ou d’acheter localement, lors de leur dernière entrée en Tunisie, un véhicule automobile de tourisme, ou un véhicule utilitaire ou un motocycle.</p>
+            <strong>Objectifs :</strong>
+            <ul>
+                <li>Favoriser le retour des TRE en facilitant l’acquisition d’un véhicule.</li>
+                <li>Encourager l’investissement des TRE en Tunisie.</li>
+            </ul>
+            <strong>Conditions :</strong>
+            <ul>
+                <li>Être un TRE depuis au moins 2 ans.</li>
+                <li>Résider en Tunisie de manière permanente ou définitive après importation.</li>
+                <li>Un seul FCR accordé par personne, valable 5 ans (non cumulable).</li>
+            </ul>
+            <strong>Avantages :</strong>
+            <ul>
+                <li>Exonération totale ou partielle des droits de douane et TVA.</li>
+                <li>Droit de circuler avec une plaque d’immatriculation spéciale (RS).</li>
+            </ul>
+            <strong>Ressources :</strong>
+            <p>Plus d'infos sur le site de la <a href="http://www.douane.gov.tn" target="_blank">Douane Tunisienne</a>.</p>
+           <strong> Conduire une voiture ou une moto bénéficiant d’une exonération totale</strong>
+           <P>Les personnes habilitées à conduire les véhicules immatriculés en RS sans autorisation préalable sont les suivantes :
+        </P>
+        <ul>
+            <li>Le bénéficiaire de la Franchise:</li>
+            <li>Le conjoint du bénéficiaire (mari ou femme, il lui suffit, en cas de contrôle, de présenter un document justifiant de sa qualité d’époux ou d’épouse);</li>
+            <li>Toute autre personne en présence du bénéficiaire ou de son conjoint (à bord du véhicule).Les personnes habilitées à conduire les véhicules immatriculés en RS sur autorisation exceptionnelle des services de la douane, sont :</li>
+        <UL>
+            <LI>Les ascendants  du bénéficière (le père, la mère)</LI>
+            <li>Le conjoint du bénéficiaire suite à sa demande </li>
+            <li>Les descendants du bénéficière (les enfants)</li>
+            <li>Les frères et sœurs du bénéficière </li>
+        </UL>
+        </ul>
+
+
+
+
+
+
+
+
+<p>et ce, sur demande <a href="https://www.douane.gov.tn/wp-content/uploads/2020/09/BTE-003-AR-0920_autor_conduire_RS_v2.pdf">(à télécharger ici)</a> déposée auprès du Bureau régional compétent territorialement accompagnée des documents suivants :</p>
+<ul>
+    <li>Photocopie de la carte d’identité nationale du bénéficiaire du privilège (propriétaire du véhicule);</li>
+    <li>Photocopie de la carte grise du véhicule </li>
+    <li>Photocopie de la carte d’identité nationale du bénéficiaire de l’autorisation</li>
+     <li>Photocopie de son permis de conduire du bénéficiaire de l’autorisation</li>
+     <li>Extrait de naissance du bénéficiaire du privilège (propriétaire du véhicule), datant de moins de 3 mois</li>
+     <li>Extrait de naissance du bénéficiaire de l’autorisation, datant de moins de 3 mois.</li>
+</ul>
+
+<p>Un permis pour conduire un véhicule RS est accordé pour un an, deux ans ou trois ans, selon le choix du propriétaire de la voiture. Sachant que les mêmes documents qui composent le dossier doivent être soumis lors de chaque processus de renouvellement de l’autorisation.</p>
+
+<strong>Important :</strong><p> À l’exception des titulaires de permis, la voiture ne peut être conduite par personne sauf si son propriétaire ou son partenaire est présent en tant que passager dans la voiture.</p>
+        </section>
+    
+        <!-- Contrat de vente -->
+        <section id="contrat-vente">
+            <h2>📄 Exemple de contrat de vente</h2>
+            <p>En Tunisie, la vente d’un véhicule entre particuliers doit être appuyée par un contrat signé et légalisé auprès de la municipalité.</p>
+            <strong>Éléments obligatoires :</strong>
+            <ul>
+                <li>Identité complète des deux parties (nom, prénom, CIN, adresse).</li>
+                <li>Description complète du véhicule : marque, modèle, immatriculation, année, N° de châssis, kilométrage.</li>
+                <li>Prix de vente (mention en chiffres et en lettres).</li>
+                <li>Date et lieu de la vente.</li>
+            </ul>
+            <strong>Documents à annexer :</strong>
+            <ul>
+                <li>Carte grise originale.</li>
+                <li>Certificat de situation administrative (non-gage).</li>
+                <li>Attestation d’assurance.</li>
+            </ul>
+            <ul>
+                <li><a href="file:///C:/Users/jnaye/OneDrive/Documents/cntrfr.pdf">Exemple de contrat (Français)</a></li>
+                <li><a href="file:///C:/Users/jnaye/OneDrive/Documents/cntrar.pdf">Exmple de contrat (Arab)</a></li>
+            </ul>
+            <p><em>Conseil :</em> Pense à effectuer la déclaration de cession au niveau de la recette des finances.</p>
+        </section>
+    
+        <!-- Droit de conduire -->
+        <section id="droit-conduire">
+            <h2>⚖️ Droit de conduire</h2>
+            <p>Le Code de la route tunisien encadre strictement les conditions de conduite et les droits liés au permis.</p>
+            <strong>Permis étrangers :</strong>
+            <ul>
+                <li>Valide 1 an après l’arrivée en Tunisie (pour les non-résidents).</li>
+                <li>Conversion possible si convention bilatérale (France, Allemagne, etc.).</li>
+            </ul>
+            <strong>Assurance obligatoire :</strong>
+            <ul>
+                <li>Responsabilité civile minimale exigée.</li>
+                <li>Peut être complétée par une assurance tous risques.</li>
+            </ul>
+            <strong>Infractions et sanctions :</strong>
+            <ul>
+                <li>Excès de vitesse : amendes de 40 à 120 TND, retrait de permis possible.</li>
+                <li>Conduite en état d’ivresse : retrait immédiat + poursuites pénales.</li>
+            </ul>
+            <strong>paiement d'Infractions</strong>
+            <ul>
+                <li>L'amende peut être payée aux guichets de la Recette des Finances de votre choix, à ce titre, les modes suivants sont acceptés : la carte bancaire via les terminaux de paiement électroniques, les chèques bancaires, le numéraire (en espèces).</li>
+                <li>Ou par carte bancaire via Internet.</li>
+                <li>Ou par mobile *127# : Tunisie Telecom *122# : Ooredoo *139# : Orange</li>
+            </ul>
+            <p><em>NB:Votre paiement sera pris en charge par le Système de Paiement Sécurisé ClicToPay relevant de la Société Monétique de Tunisie qui respecte les normes internationales en la matière.</em></p>
+            <p>Consulte le <a href="http://www.interieur.gov.tn" target="_blank">Ministère de l’Intérieur</a> pour le Code routier complet.</p>
+        </section>
+    
+        <!-- Visite technique -->
+        <section id="visite-technique">
+            <h2>🔍 Visite technique</h2>
+            <p>Tout véhicule immatriculé en Tunisie doit subir une visite technique périodique dans un centre agréé.</p>
+            <strong>Fréquence :</strong>
+            <ul>
+                <li>Véhicule neuf : première visite après 4 ans.</li>
+                <li>Puis tous les ans pour les voitures particulières.</li>
+            </ul>
+            <strong>Points de contrôle :</strong>
+            <ul>
+                <li>Système de freinage</li>
+                <li>Pneumatiques</li>
+                <li>Lumières et phares</li>
+                <li>Pollution et émission</li>
+            </ul>
+            <strong>En cas d’échec :</strong>
+            <p>Le véhicule doit être réparé et présenté de nouveau dans un délai de 7 à 30 jours selon le défaut.</p>
+            <p>Prise de RDV sur : <a href="http://www.attt.tn" target="_blank">www.attt.tn</a></p>
+            <p style="font-size: 19px;color: #062795;font-weight:bold;">Points de contrôle:<p/>
+            <img src="./point.png">
+        </section>
+    
+        <!-- Permis de conduire -->
+        <section id="permis-conduire">
+            <h2>🪪 Permis de conduire</h2>
+            <p>Le permis de conduire tunisien est délivré après une formation théorique (code) et pratique.</p>
+            <strong>Conditions d’obtention :</strong>
+            <ul>
+                <li>Âge minimum : 18 ans pour les voitures (cat. B).</li>
+                <li>Inscription dans une auto-école agréée.</li>
+                <li>Test théorique informatisé + test pratique sur route.</li>
+            </ul>
+            <strong>Validité :</strong>
+            <ul>
+                <li>10 ans (renouvelable).</li>
+                <li>Un contrôle médical peut être exigé à chaque renouvellement.</li>
+            </ul>
+            <strong>Documents à fournir :</strong>
+            <ul>
+                <li>Formulaire d’inscription rempli</li>
+                <li>4 photos d’identité</li>
+                <li>Certificat médical</li>
+                <li>CIN + justificatif de résidence</li>
+            </ul>
+            <di>
+                <img src="./omm.jpeg">
+                <img src="./imm.jpeg">
+            </di>
+        </section>
+    
+        <section id="vignette">
+            <h2>Vignette automobile</h2>
+
+            <p>En Tunisie, la vignette automobile est une taxe annuelle obligatoire à payer pour chaque véhicule motorisé. Elle varie en fonction de la puissance fiscale du véhicule (chevaux fiscaux) et du type de carburant (essence ou diesel).</p>
+            
+            <ul>
+              <li>La date limite de paiement est généralement fixée au 5 février de chaque année.</li>
+              <li>Le montant dépend de la puissance fiscale : par exemple, une voiture de 6CV essence paiera moins qu’un 10CV diesel.</li>
+              <li>Le paiement peut se faire en ligne via la plateforme de la DGI ou dans les recettes des finances.</li>
+              <li>Les véhicules populaires, électriques, ou certains engins agricoles peuvent être exonérés ou bénéficier de tarifs réduits.</li>
+            </ul>
+          
+            <p><strong>Sanctions :</strong> En cas de non-paiement, une pénalité de retard est appliquée, et la carte grise peut être bloquée.</p>
+          
+            <p><strong>Astuce :</strong> Gardez toujours une copie de votre reçu dans le véhicule pour les contrôles routiers.</p>
+            <section id="vignette">
+                
+                <p>
+                  La vignette automobile est une taxe annuelle obligatoire en Tunisie, calculée selon la puissance fiscale (chevaux fiscaux) et le type de carburant. Voici un tableau récapitulatif :
+                </p>
+              
+                <div class="table-container">
+                  <table class="vignette-table">
+                    <thead>
+                      <tr>
+                        <th>Puissance fiscale (CV)</th>
+                        <th>Essence (TND)</th>
+                        <th>Diesel (TND)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>De 1 à 4 CV</td>
+                        <td>65</td>
+                        <td>130</td>
+                      </tr>
+                      <tr>
+                        <td>De 5 à 7 CV</td>
+                        <td>130</td>
+                        <td>210</td>
+                      </tr>
+                      <tr>
+                        <td>De 8 à 9 CV</td>
+                        <td>210</td>
+                        <td>400</td>
+                      </tr>
+                      <tr>
+                        <td>10 CV et plus</td>
+                        <td>1000</td>
+                        <td>1800</td>
+                      </tr>
+                      <tr>
+                        <td>Voitures de luxe (valeur &gt; 150 000 TND)</td>
+                        <td colspan="2">4000 TND (forfaitaire)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              
+                <p>
+                  <strong>NB :</strong> Ces montants sont à titre indicatif. Vérifiez les dernières mises à jour sur le site de la <a href="https://www.impots.finances.gov.tn/" target="_blank">Direction Générale des Impôts</a>.
+                </p>
+              </section>
+              
+          </section>
+          
+    
+    </div>
+    
+</body>
+<script>
+     // Sélectionner les éléments nécessaires
+const guideLink = document.getElementById('guide-link');
+const dropdownContent = document.getElementById('guide-dropdown');
+
+// Ajouter un événement au clic sur le lien "Guide Pratique"
+guideLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Empêcher le comportement par défaut du lien
+
+    // Basculer l'affichage de la liste déroulante
+    if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+    } else {
+        dropdownContent.style.display = 'block';
+    }
+});
+
+// Fermer la liste déroulante si on clique en dehors
+document.addEventListener('click', function(event) {
+    if (!guideLink.contains(event.target) && !dropdownContent.contains(event.target)) {
+        dropdownContent.style.display = 'none';
+    }
+});
+   // Gestion de la navigation
+   document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Supprime la classe 'active' de tous les liens
+        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+
+        // Ajoute la classe 'active' au lien cliqué
+        this.classList.add('active');
+
+        // Vérifie si le lien doit rediriger vers une autre page
+        const redirections = {
+            avendre: "avendre.html",
+            zyout: "vidanji.html",
+            marchee: "car.html",
+            jeux: "quize.html",
+            location: "location.html"
+        };
+
+        if (redirections[this.classList[0]]) {
+            window.location.href = redirections[this.classList[0]];
+        } else {
+            // Défilement en douceur vers la section correspondante
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+});
+
+</script></html>

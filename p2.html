@@ -9,7 +9,7 @@
             justify-content: center;  /* Centre horizontalement */
             align-items: center;      /* Centre verticalement */
             font-family: Arial, sans-serif;
-            background-image: url('https://img.freepik.com/photos-gratuite/fond-marbre-liquide-bleu-diy-art-experimental-texture-fluide_53876-103625.jpg');
+            background-color:white ;
             margin: 0;
             padding: 20px;
             min-height: 100vh;
@@ -39,7 +39,7 @@
             box-shadow: 0 0px 20px rgba(0, 149, 255, 0.471);
         }
         h2{
-            color: #c51414;
+            color: #082a80;
       
            font-style: italic;  
             font-size: 40px;
@@ -65,7 +65,7 @@
             font-style: italic;  
             font-size: 54px;
             text-align: center;
-            color: #c51414;
+            color: #04ae23;
             margin-bottom: 30px;
         }
         .form-group {
@@ -89,8 +89,8 @@
             gap: 10px;
         }
         .search-btn {
-            background-color: #c60000;
-            color: #000000;
+            background-color: #060b9e;
+            color: #fafafa;
             font-weight: bold;
             font-size: 16px;
             padding: 10px;
@@ -99,13 +99,13 @@
             cursor: pointer;
         }
         .search-btn:hover {
-            background-color: #e00016;
+            background-color: #00c2e0;
         }
         .hidden {
             display: none;
         }
         button {
-            background: linear-gradient(135deg, #fe0404, #ec0000);
+            background: linear-gradient(135deg, #260990, #141089);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -126,12 +126,13 @@
             border-radius: 4px;
             margin: 5px 0;
         }
-
+  
     </style>
 </head>
 <body>
+      
     <div class="container">
-        <h1 style="color: #e00016;">Remplissez le formulaire pour réserver une voiture</h1>
+        <h1 style="color: #0e6a42;">Remplissez le formulaire pour réserver une voiture</h1>
 
         <form>
             <div class="form-group">
@@ -205,8 +206,9 @@
             <label for="message">Écrivez votre message :</label>
             <input type="text" id="message" name="message" required></textarea>
             <button type="submit">Envoyer</button> 
-    </div>
 
+    
+</body>
     <script>
           (function(){
         emailjs.init("jnayehachref2004@gmail.com"); // Remplace par ton User ID EmailJS
@@ -236,6 +238,6 @@
                 cinGroup.classList.add("hidden");
             }
         });
-    </script>
-</body>
-</html>
+   
+     </script>
+     </html>
